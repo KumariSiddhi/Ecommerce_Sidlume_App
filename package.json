@@ -1,50 +1,60 @@
 {
-  "name": "bolt-expo-starter",
-  "main": "expo-router/entry",
-  "version": "1.0.0",
-  "private": true,
+  "name": "@xmldom/xmldom",
+  "version": "0.7.13",
+  "description": "A pure JavaScript W3C standard-based (XML DOM Level 2 Core) DOMParser and XMLSerializer module.",
+  "keywords": [
+    "w3c",
+    "dom",
+    "xml",
+    "parser",
+    "javascript",
+    "DOMParser",
+    "XMLSerializer",
+    "ponyfill"
+  ],
+  "homepage": "https://github.com/xmldom/xmldom",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xmldom/xmldom.git"
+  },
+  "main": "lib/index.js",
+  "types": "index.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "readme.md",
+    "index.d.ts",
+    "lib"
+  ],
   "scripts": {
-    "dev": "EXPO_NO_TELEMETRY=1 expo start",
-    "build:web": "expo export --platform web",
-    "lint": "expo lint"
+    "lint": "eslint lib test",
+    "start": "nodemon --watch package.json --watch lib --watch test --exec 'npm --silent run test && npm --silent run lint'",
+    "stryker": "stryker run",
+    "stryker:dry-run": "stryker run -m '' --reporters progress",
+    "test": "jest",
+    "testrelease": "npm test && eslint lib",
+    "release": "np --no-yarn --test-script testrelease --branch release-0.7.x --tag lts patch"
   },
-  "dependencies": {
-    "@expo/vector-icons": "^14.0.2",
-    "@lucide/lab": "^0.1.2",
-    "@react-navigation/bottom-tabs": "^7.2.0",
-    "@react-navigation/native": "^7.0.14",
-    "@react-native-async-storage/async-storage": "1.21.0",
-    "axios": "^1.6.7",
-    "expo": "52.0.33",
-    "expo-blur": "^14.0.3",
-    "expo-camera": "^16.0.18",
-    "expo-constants": "^17.0.5",
-    "expo-font": "^13.0.3",
-    "expo-haptics": "^14.0.1",
-    "expo-linear-gradient": "^14.0.2",
-    "expo-linking": "^7.0.5",
-    "expo-router": "4.0.17",
-    "expo-splash-screen": "^0.29.21",
-    "expo-status-bar": "^2.0.1",
-    "expo-symbols": "^0.2.2",
-    "expo-system-ui": "^4.0.7",
-    "expo-web-browser": "^14.0.2",
-    "lucide-react-native": "^0.475.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-native": "0.76.6",
-    "react-native-gesture-handler": "^2.23.0",
-    "react-native-reanimated": "^3.16.7",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-screens": "^4.4.0",
-    "react-native-svg": "^15.11.1",
-    "react-native-url-polyfill": "^2.0.0",
-    "react-native-web": "^0.19.13",
-    "react-native-webview": "13.12.5"
+  "engines": {
+    "node": ">=10.0.0"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@types/react": "~18.3.12",
-    "typescript": "^5.3.3"
-  }
+    "@stryker-mutator/core": "^5.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-es5": "^1.5.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "get-stream": "^6.0.1",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "np": "7.6.2",
+    "prettier": "^2.3.2",
+    "xmltest": "^1.5.0",
+    "yauzl": "^2.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/xmldom/xmldom/issues"
+  },
+  "license": "MIT"
 }
